@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title><%= title %></title>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="shortcut icon" type="image/jpg" href="https://img.icons8.com/color/48/000000/n-cute.png"/>
+      <script>
+        function myFunction() {
+          let input, filter, ul, li, a, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("wrapper");
+          li = ul.getElementsByClassName("anuncio");
+
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByClassName("nombre")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+      </script>
+  </head>
+  <body>
+      <h1><%= title %></h1>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscador de anuncios">
+      <% if (anuncios.length === 0) { %>
+        <p> Ningún anuncio coincide con tu búsqueda.</p>
+      <% } else {%>
+        <h2>Aquí tienes el listado de anuncios:</h2>
+        <div class="wrapper" id="wrapper">
+          <% for (let i = 0; i < anuncios.length; i++) { %>
+            <div class="anuncio">
+              <h3 class="nombre"> <%= anuncios[i].nombre %></h3>
+              <img src=<%= anuncios[i].foto %> alt="">
+              <% if (anuncios[i].venta === false) { %>
+                <li> Se busca </li>
+                <% } else { %>
+                  <li> Se vende </li>
+                  <% } %>
+                  <li><span>Precio:</span> <%= anuncios[i].precio %> €</li>
+                  <li><span>Tags:</span> <%= anuncios[i].tags %> </li>
+                </div>
+                <% } %>
+              </div>
+            </body>
+      <% } %>
+</html>

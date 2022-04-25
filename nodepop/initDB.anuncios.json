@@ -1,0 +1,72 @@
+[
+    {
+        "nombre": "Pelota",
+        "venta": false,
+        "precio": 10.0,
+        "foto": "http://localhost:3000/images/basket.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "nombre": "Bicicleta",
+        "venta": true,
+        "precio": 230.15,
+        "foto": "http://localhost:3000/images/bici.jpg",
+        "tags": ["lifestyle", "motor"]
+    },
+    {
+        "nombre": "Cascos",
+        "venta": false,
+        "precio": 35.0,
+        "foto": "http://localhost:3000/images/cascos.jpg",
+        "tags": ["mobile", "work"]
+    },
+    {
+        "nombre": "Coche Fiat 500",
+        "venta": false,
+        "precio": 4500.0,
+        "foto": "http://localhost:3000/images/coche.jpg",
+        "tags": ["motor", "work"]
+    },
+    {
+        "nombre": "Iphone",
+        "venta": false,
+        "precio": 100.0,
+        "foto": "http://localhost:3000/images/iphone.jpg",
+        "tags": ["work", "mobile"]
+    },
+    {
+        "nombre": "Longboard",
+        "venta": false,
+        "precio": 150.0,
+        "foto": "http://localhost:3000/images/longboard.jpg",
+        "tags": ["lifestyle", "motor"]
+    },
+    {
+        "nombre": "Máquina-de-Escribir",
+        "venta": true,
+        "precio": 75.0,
+        "foto": "http://localhost:3000/images/maquina-escribir.jpg",
+        "tags": ["lifestyle", "work"]
+    },
+    {
+        "nombre": "Figura-Luffy",
+        "venta": false,
+        "precio": 9.0,
+        "foto": "http://localhost:3000/images/one-piece.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "nombre": "Peluches",
+        "venta": false,
+        "precio": 5.0,
+        "foto": "http://localhost:3000/images/peluche.jpg",
+        "tags": ["lifestyle"]
+    },
+    {
+        "nombre": "Portatil Macbook Pro",
+        "venta": false,
+        "precio": 2550.0,
+        "foto": "http://localhost:3000/images/portatil.jpg",
+        "tags": ["work", "lifestyle"]
+    }
+]
