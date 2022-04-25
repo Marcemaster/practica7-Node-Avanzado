@@ -10,6 +10,10 @@ var indexRouter = require("./routes/index");
 var app = express();
 require("./lib/connectMongoose");
 
+// Setup de i18n  ESTO ES PARA TENER LA WEB EN VARIOS IDIOMAS (INTERNACIONALIZACIÓN)
+
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
