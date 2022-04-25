@@ -1,17 +1,20 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var anunciosRouter = require("./routes/api/anuncios");
-var indexRouter = require("./routes/index");
+const anunciosRouter = require("./routes/api/anuncios");
+const indexRouter = require("./routes/index");
 
-var app = express();
+const i18n = require('./lib/i18nConfigure.js')
+
+const app = express();
+
 require("./lib/connectMongoose");
 
 // Setup de i18n  ESTO ES PARA TENER LA WEB EN VARIOS IDIOMAS (INTERNACIONALIZACIÓN)
-
+app.use(i18n.init)
 
 
 // view engine setup

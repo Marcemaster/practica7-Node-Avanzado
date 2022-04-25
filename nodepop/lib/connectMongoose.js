@@ -11,6 +11,6 @@ mongoose.connection.once('open', () => {
   console.log('Conectado a MongoDB en la BD:', mongoose.connection.name);
 });
 
-mongoose.connect('mongodb://0.0.0.0/nodepop');
+mongoose.connect("mongodb://0.0.0.0/nodepop");
 
 module.exports = mongoose.connection;
