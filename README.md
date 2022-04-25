@@ -1,4 +1,6 @@
-# Práctica 4 WEB-API / Node.js / MongoDB
+# Práctica 7 Backend Avanzado con Node
+
+!!! PENDIENTE CAMBIAR README !!! 
 
 En esta práctica desarrollamos el API que se ejecutará en el servidor de un servicio de venta de artículos de segunda mano llamado Nodepop.
 
