@@ -89,14 +89,12 @@ _Anuncios en venta, ordenados por precio_
 
 http://localhost:3000/?sort=precio&venta=true
 
-
 ## Construido con 🛠️
 
 * Node
 * MongoDB
 * Express
 * EJS
-
 
 ## Autor ✒️
 
