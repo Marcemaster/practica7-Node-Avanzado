@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-      <title><%= title %></title>
-      <link rel="stylesheet" href="/stylesheets/style.css" />
-      <link rel="shortcut icon" type="image/jpg" href="https://img.icons8.com/color/48/000000/n-cute.png"/>
+
       <script>
         function myFunction() {
           let input, filter, ul, li, a, i;
@@ -23,9 +18,9 @@
           }
         }
       </script>
-  </head>
-  <body>
-      <h1><%= title %></h1>
+
+      <% include header.ejs %>
+      
       <h2><%= __('Advert list:') %></h2>
       <input type="text" id="myInput" onkeyup="myFunction()">
         <div class="wrapper" id="wrapper">
@@ -43,5 +38,4 @@
                 </div>
                 <% } %>
               </div>
-            </body>
-</html>
+      <% include footer.ejs %>

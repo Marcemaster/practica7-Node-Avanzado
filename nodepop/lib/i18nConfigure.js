@@ -10,7 +10,7 @@ i18n.configure({
     defaultLocale: 'en',
     autoReload: true,
     syncFiles: true,
-    cookie: 'nodeapp-locale',
+    cookie: 'nodepop-locale',
 });
 
 i18n.setLocale('en');
