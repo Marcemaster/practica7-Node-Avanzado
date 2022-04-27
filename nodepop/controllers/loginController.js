@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 
-const { Usuario } = require('../models/Usuario');
+const { Usuario } = require('../models');
 
 class LoginController {
   // login post desde API que retorna JWT
@@ -20,7 +20,7 @@ class LoginController {
       }
 
       // generamos un JWT con su _id
-      jwt.sign({ _id: usuario._id }, "dflkñasjdfalñsf123", {
+      jwt.sign({ _id: usuario._id }, "secreto", {
         expiresIn: '2d'
       }, (err, jwtToken) => {
         if (err) {

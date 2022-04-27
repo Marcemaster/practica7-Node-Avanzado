@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
   }
 
   // comprobar que el token es válido
-  jwt.verify(jwtToken, "dflkñasjdfalñsf123", (err, payload) => {
+  jwt.verify(jwtToken, "secreto", (err, payload) => {
     if (err) {
       const error = new Error('invalid token')
       error.status = 401;
