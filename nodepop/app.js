@@ -4,12 +4,19 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
+
+const { isAPIRequest } = require('./lib/utils');
+
 const anunciosRouter = require("./routes/api/anuncios");
 const indexRouter = require("./routes/index");
 
 const i18n = require("./lib/i18nConfigure.js");
+const LoginController = require('./controllers/loginController');
 
-const app = express();
+const jwtAuth = require('./lib/jwtAuth');
+
+var app = express();
+const loginController = new LoginController();
 
 require("./lib/connectMongoose");
 
@@ -34,11 +41,11 @@ app.use(express.static(path.join(__dirname, "public")));
 /**
  * Rutas de mi API
  */
+app.post('/api/login', loginController.postJWT)
+app.use("/api/anuncios", jwtAuth, anunciosRouter);
+app.use("/api/tags", jwtAuth, anunciosRouter);
 
-app.use("/api/anuncios", anunciosRouter);
-app.use("/api/tags", anunciosRouter);
-
-// Setup de i18n  ESTO ES PARA TENER LA WEB EN VARIOS IDIOMAS (INTERNACIONALIZACIÓN)
+// Setup de i18n
 app.use(i18n.init);
 
 /**

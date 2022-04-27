@@ -26,6 +26,8 @@ npm install
 
 _A continuación cargamos la base de datos a través del script de inicialización:_
 
+Este comando creará 10 anuncios y 2 usuarios. ( user@example.com con la contraseña 1234)
+
 ```
 node initDB.mjs
 ```
