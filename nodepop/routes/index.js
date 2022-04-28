@@ -10,7 +10,6 @@ router.get("/", async function (req, res, next) {
         const precio = req.query.precio;
         const precioMin = req.query.precioMin;
         const precioMax = req.query.precioMax;
-        const foto = req.query.foto;
         const tags = req.query.tags;
         const skip = req.query.skip;
         const limit = req.query.limit;
@@ -34,9 +33,6 @@ router.get("/", async function (req, res, next) {
         }
         if (precioMax && precioMin) {
             filtros.precio = { $gte: precioMin, $lte: precioMax };
-        }
-        if (foto) {
-            filtros.foto = foto;
         }
         if (tags) {
             filtros.tags = tags;

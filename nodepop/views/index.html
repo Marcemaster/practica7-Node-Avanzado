@@ -27,7 +27,7 @@
           <% for (let i = 0; i < anuncios.length; i++) { %>
             <div class="anuncio">
               <h3 class="nombre"> <%= anuncios[i].nombre %></h3>
-              <img src=<%= anuncios[i].foto %> alt="">
+              <img src=<%= anuncios[i].foto ||'http://localhost:3000/images/sin-foto.png' %> alt="">
               <% if (anuncios[i].venta === false) { %>
                 <li> <%= __('Searching') %> </li>
                 <% } else { %>

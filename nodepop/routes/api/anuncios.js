@@ -3,6 +3,22 @@
 var express = require("express");
 const createError = require("http-errors");
 const Anuncio = require("../../models/anuncio.js");
+
+// MULTER 
+
+const multer = require("multer");
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.originalname)
+    }
+  })
+  
+const upload = multer({ storage: storage })
+  
 var router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -12,7 +28,6 @@ router.get("/", async (req, res, next) => {
         const precio = req.query.precio;
         const precioMin = req.query.precioMin;
         const precioMax = req.query.precioMax;
-        const foto = req.query.foto;
         const tags = req.query.tags;
         const skip = req.query.skip;
         const limit = req.query.limit;
@@ -37,9 +52,6 @@ router.get("/", async (req, res, next) => {
         if (precioMax && precioMin) {
             filtros.precio = { $gte: precioMin, $lte: precioMax };
         }
-        if (foto) {
-            filtros.foto = foto;
-        }
         if (tags) {
             filtros.tags = tags;
         }
@@ -52,9 +64,10 @@ router.get("/", async (req, res, next) => {
     }
 });
 
-router.post("/", async (req, res, next) => {
+router.post("/", upload.single('foto'), async (req, res, next) => {
     try {
         const anuncioData = req.body;
+
         let anuncioIncompleto = "Anuncio incompleto, debes incluir: ";
         if (!anuncioData.nombre) {
             anuncioIncompleto += "\n \u2022 El nombre del producto.";
@@ -64,9 +77,6 @@ router.post("/", async (req, res, next) => {
         }
         if (!anuncioData.precio) {
             anuncioIncompleto += "\n \u2022 El precio del producto.";
-        }
-        if (!anuncioData.foto) {
-            anuncioIncompleto += "\n \u2022 La foto del producto.";
         }
         if (!anuncioData.tags) {
             anuncioIncompleto += "\n \u2022 Las etiquetas del producto.";
