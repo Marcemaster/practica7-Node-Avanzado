@@ -1,15 +1,17 @@
 "use strict";
 
-const { Requester } = require("cote");
-
 // Crear thumbnails de las fotos subidas
 
 const { Requester } = require("cote");
 
-const requester = new Requester({ name: "app" });
+const requester = new Requester({ name: "App" });
 
 const evento = {
-    type: 'crear-thumbnail'
+    type: 'crear-thumbnail',
+
+    tamaño: 100,
+    saludo: "Hola",
+    
 }
 
 requester.send(evento, resultado => {

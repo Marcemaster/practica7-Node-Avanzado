@@ -9,11 +9,11 @@ const Anuncio = require("../../models/anuncio.js");
 const multer = require("multer");
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'uploads/')
+      cb(null, 'public/images/')
     },
     filename: function (req, file, cb) {
-      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      cb(null, file.originalname)
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9) // NO SE ESTÁ USANDO
+      cb(null,uniqueSuffix+ file.originalname)
     }
   })
   
@@ -29,6 +29,8 @@ router.get("/", async (req, res, next) => {
         const precioMin = req.query.precioMin;
         const precioMax = req.query.precioMax;
         const tags = req.query.tags;
+        const foto = req.query.foto
+        const ruta = req.query.ruta;
         const skip = req.query.skip;
         const limit = req.query.limit;
         const sort = req.query.sort;
@@ -65,8 +67,12 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", upload.single('foto'), async (req, res, next) => {
+    console.log(req.foto)
     try {
+
         const anuncioData = req.body;
+        anuncioData.foto = "http://localhost:3000/images/"+ req.file.filename
+        console.log(anuncioData)
 
         let anuncioIncompleto = "Anuncio incompleto, debes incluir: ";
         if (!anuncioData.nombre) {
