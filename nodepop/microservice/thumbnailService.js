@@ -1,6 +1,5 @@
 "use strict";
-
-// Microservicio de creación de thumbnails
+const jimp = require("jimp");
 
 const { Responder } = require("cote");
 
@@ -8,9 +7,12 @@ const { Responder } = require("cote");
 
 const responder = new Responder({ name: "Creador-thumbnails" });
 
-responder.on("crear-thumbnail", (req, done) => {
-    const { tamaño, saludo } = req
-    console.log("Tamaño= ", tamaño, saludo)
+responder.on("crear-thumbnail", async (req, done) => {
+  const { ruta, tamaño, nombre } = req;
+  const image = await jimp.read(ruta);
+  image.resize(tamaño, jimp.AUTO);
+  
+  image.writeAsync('../public/images/thumbnails/'+'thumbnail_'+nombre);
 
-    done(tamaño+1)
+  done();
 });

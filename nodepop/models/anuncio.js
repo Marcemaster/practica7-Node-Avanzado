@@ -1,5 +1,6 @@
 "use strict";
 
+const { Requester } = require("cote");
 const mongoose = require("mongoose");
 
 const anuncioSchema = new mongoose.Schema({
