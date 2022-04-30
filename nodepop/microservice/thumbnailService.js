@@ -14,5 +14,5 @@ responder.on("crear-thumbnail", async (req, done) => {
   
   image.writeAsync('../public/images/thumbnails/'+'thumbnail_'+nombre);
 
-  done();
+  done('../public/images/thumbnails/'+'thumbnail_'+nombre);
 });

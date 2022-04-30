@@ -72,7 +72,6 @@ router.post("/", upload.single("foto"), async (req, res, next) => {
   try {
     const anuncioData = req.body;
     anuncioData.foto = "http://localhost:3000/images/" + req.file.filename;
-    console.log(req.file.path)
 
     // Microservicio
     const evento = {
@@ -83,7 +82,7 @@ router.post("/", upload.single("foto"), async (req, res, next) => {
     };
 
     requester.send(evento, (resultado) => {
-      console.log("Enviando ruta", resultado);
+      console.log("Thumbnail creada: ", resultado);
     });
 
     //
