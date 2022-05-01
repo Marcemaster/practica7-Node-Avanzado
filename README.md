@@ -1,15 +1,6 @@
 # Práctica 7 Backend Avanzado con Node
 
-!!! PENDIENTE CAMBIAR README !!! 
-
-En esta práctica desarrollamos el API que se ejecutará en el servidor de un servicio de venta de artículos de segunda mano llamado Nodepop.
-
-El servicio contiene anuncios de compra o venta de artículos y permite filtrar anuncios por varios criterios (Nombre, venta, precio, tags.)
-
-Además, permite la creación de anuncios y la extracción una lista de los "Tags" incluidos.
-
-Por último, se ha incoporado una barra de buscador por nombre en la pantalla inicial para filtrar los anuncios por nombre a través del teclado.
-
+En esta práctica trabajaremos sobre la práctica que desarollamos anteriormente en el módulo de backend con node. Daremos seguridad al API mediante autenticación por token JWT, internacionalizamos la web para que esté disponible en 2 idiomas con I18N y por último desarrollamos una subida de imagen con tarea en background a través de un microservicio que se encargue de crear miniaturas de las fotos subidas.
 
 ## Comenzando 🚀
 
@@ -26,77 +17,52 @@ npm install
 
 _A continuación cargamos la base de datos a través del script de inicialización:_
 
+Nos pedirá la confirmación por lo que tendremos que escribir "si" en el terminal y pulsar enter.
+
 Este comando creará 10 anuncios y 2 usuarios. ( user@example.com con la contraseña 1234)
 
 ```
 node initDB.mjs
 ```
 
-_Por último, corremos la App con el comando:_
+corremos la App con el comando:_
 
 ```
 nodemon app.js
 ```
 
+## Iniciando el microservicio ⚙️
+
+_Abrimos un nuevo terminal y accedemos a la carpeta "Microservice"_
+
+```
+cd nodepop
+cd microservice
+```
+
+_Iniciamos el microservicio_
+
+```
+nodemon thumbnailService.js
+
+```
 
 ## Funcionamiento ⚙️
 
-_Con el servidor corriendo podemos acceder a la ruta:_
+Probaremos la práctica a través de POSTMAN. 
 
-http://localhost:3000
+Se podrán pedir al api el listado de anuncios mediante petición GET o publicar un anuncio nuevo mediante una petición POST, ambos deberán llevar un TOKEN en la cabecera, por query string o bien dentro del body para validar la autenticación. Este token tendrá que ser obtenido previamente mediante una petición POST al endpoint de login 
 
-_para ver un listado de todos los anuncios cargados desde el instalador._
+_http://localhost:3000/api/login_
 
-_Esta lista de anuncios podemos fitrarla a través de la barra de navegación utilizando cualquiera de los siguientes filtros:_
-
-* **limit** // Limitar el nº de anuncios
-* **sort** // Ordenar
-* **nombre** // Filtrar por nombre 
-* **skip** // Saltar anuncios
-* **precioMin** // Poner un precio mínimo
-* **precioMax** // Poner un precio máximo
-* **tags** // Filtrar por etiquetas
-* **venta** // Filtrar por producto en venta o en búsqueda
-
-
-### Rutas 🖇️
-
-_También podemos acceder directamente a al API con la ruta: _
-
-http://localhost:3000/api/anuncios
-
-_La cual nos devuelve un JSON con todos los anuncios (En esta ruta también podemos aplicar los filtros)_
-
-
-_Para obtener un JSON con todos los tags de los anuncios en la base de datos accedemos a la ruta:_
-
-http://localhost:3000/api/anuncios/tags
-
-
-_Por último, podemos hacer peticiones POST a la ruta:_
-
-http://localhost:3000/api/anuncios
-
-_La cual nos creará un nuevo anuncio y lo guardará en la base de datos, o bien nos devolverá una respuesta con los campos a rellenar para poder crear el anuncio correctamente._
-
-
-### Ejemplo de peticiones con filtros ⌨️
-
-_Ordenar anuncios por nombre, de máximo 50€, que contengan el tag "lifestyle" y limitado a 2 anuncios:_
-
-http://localhost:3000/?sort=nombre&precioMin=50&tags=lifestyle&limit=2
-
-
-_Anuncios en venta, ordenados por precio_
-
-http://localhost:3000/?sort=precio&venta=true
+<img src="nodepop\public\images\ejemplo-post.png" alt="Petición post"/>
 
 ## Construido con 🛠️
 
-* Node
-* MongoDB
-* Express
-* EJS
+* I18N
+* COTE
+* JWT
+* JIMP
 
 ## Autor ✒️
 
