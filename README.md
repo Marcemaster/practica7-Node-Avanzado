@@ -1,3 +1,8 @@
+# Práctica 9 Despliegue en AWS
+
+Dirección IP: 54.175.122.218 
+Dirección de despliegue: http://ec2-54-175-122-218.compute-1.amazonaws.com/
+
 # Práctica 7 Backend Avanzado con Node
 
 En esta práctica trabajaremos sobre la práctica que desarollamos anteriormente en el módulo de backend con node. Daremos seguridad al API mediante autenticación por token JWT, internacionalizamos la web para que esté disponible en 2 idiomas con I18N y por último desarrollamos una subida de imagen con tarea en background a través de un microservicio que se encargue de crear miniaturas de las fotos subidas.
